@@ -1,0 +1,26 @@
+version: '2'
+services:
+
+  envoy_customer:
+    build:
+      context: .
+      dockerfile: Dockerfile-customer_client
+    volumes:
+      - ./config/envoy-customer-client.json:/etc/envoy-customer-client.json
+    expose:
+      - "50051"
+    ports:
+      - "50051:50051"
+      - "9901:9901"
+
+  envoy_service:
+    build:
+      context: .
+      dockerfile: Dockerfile-customer_server
+    volumes:
+      - ./config/envoy-customer-server.json:/etc/envoy-customer-server.json
+    expose:
+      - "50052"
+    ports:
+      - "50052:50052"
+      - "9902:9902"      
