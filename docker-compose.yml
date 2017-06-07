@@ -1,7 +1,7 @@
 version: '2'
 services:
 
-  envoy_customer:
+  envoy_client:
     build:
       context: .
       dockerfile: Dockerfile-customer_client
@@ -13,7 +13,7 @@ services:
       - "50051:50051"
       - "9901:9901"
 
-  envoy_service:
+  envoy_server:
     build:
       context: .
       dockerfile: Dockerfile-customer_server
@@ -23,4 +23,4 @@ services:
       - "50052"
     ports:
       - "50052:50052"
-      - "9902:9902"      
+      - "9902:9902"     

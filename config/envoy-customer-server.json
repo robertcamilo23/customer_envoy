@@ -7,8 +7,13 @@
           "type": "read",
           "name": "http_connection_manager",
           "config": {
-            "codec_type": "auto",
+            "codec_type": "http2",
             "stat_prefix": "ingress_http",
+            "access_log": [
+              {
+                "path": "/var/log/envoy/admin_access.log"
+              }
+            ],
             "route_config": {
               "virtual_hosts": [
                 {
@@ -16,11 +21,7 @@
                   "domains": ["*"],
                   "routes": [
                     {
-                      "timeout_ms": 1000,
-                      "prefix": "/",
-                      "headers": [
-                        {"name": "content-type", "value": "application/grpc"}
-                      ],
+                      "path": "/com.customer.protos.CustomerPlan/associateCustomerToPlan",
                       "cluster": "customer_service_grpc"
                     }
                   ]
@@ -28,6 +29,11 @@
               ]
             },
             "filters": [
+              { 
+                "type": "both",
+                "name": "grpc_web",
+                "config": {}
+              },
               {
                 "type": "decoder",
                 "name": "router",
@@ -40,7 +46,7 @@
     }
   ],
   "admin": {
-    "access_log_path": "/tmp/envoy-admin",
+    "access_log_path": "/var/log/envoy/admin_access.log",
     "address": "tcp://0.0.0.0:9902"
   },
   "cluster_manager": {
@@ -53,7 +59,7 @@
         "features": "http2",
         "hosts": [
           {
-            "url": "tcp://0.0.0.0:50053"
+            "url": "tcp://127.0.0.1:50053"
           }
         ]
       }

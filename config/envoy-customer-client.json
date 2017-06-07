@@ -9,36 +9,26 @@
           "config": {
             "codec_type": "auto",
             "stat_prefix": "egress_http",
-            "add_user_agent": true,
-            "idle_timeout_s": 840,
             "access_log": [
               {
-                "path": "/tmp/envoy-admin"
+                "path": "/var/log/envoy/admin_access.log"
               }
             ],
-            "use_remote_address": true,
             "route_config": {
               "virtual_hosts": [
                 {
-                  "name": "grpc",
-                  "domains": [
-                    "grpc"
-                  ],
+                  "name": "client_routes",
+                  "domains": ["*"],
                   "routes": [
                     {
                       "prefix": "/",
-                      "cluster": "grpc"
+                      "cluster": "customer_server"
                     }
                   ]
                 }
               ]
             },
             "filters": [
-              {
-                "type": "both",
-                "name": "grpc_http1_bridge",
-                "config": {}
-              },
               {
                 "type": "decoder",
                 "name": "router",
@@ -51,22 +41,17 @@
     }
   ],
   "admin": {
-    "access_log_path": "/tmp/envoy-admin",
+    "access_log_path": "/var/log/envoy/admin_access.log",
     "address": "tcp://0.0.0.0:9901"
   },
   "cluster_manager": {
     "clusters": [
       {
-        "name": "grpc",
-        "type": "logical_dns",
+        "name": "customer_server",
+        "type": "static",
         "lb_type": "round_robin",
         "connect_timeout_ms": 250,
-        "features": "http2",
-        "hosts": [
-          {
-            "url": "tcp://grpc:50052"
-          }
-        ]
+        "hosts": [{"url": "tcp://127.0.0.1:50052"}]
       }
     ]
   }
