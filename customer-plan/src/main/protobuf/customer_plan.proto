@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package com.customer.protos;
+
+service CustomerPlan {
+    rpc associateCustomerToPlan ( Request ) returns ( Reply ) {}
+}
+
+message Request {
+    string customerId = 1;
+    string customerPlan = 2;
+}
+
+message Reply {
+    string message = 1;
+}

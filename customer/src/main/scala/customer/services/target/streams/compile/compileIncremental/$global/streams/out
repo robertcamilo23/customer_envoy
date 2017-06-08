@@ -1,0 +1,80 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala, /home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala, /home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala, /home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala, /home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 2 sources: invalidated sources (2) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 2 Scala sources to /home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.13:component from component compiler for Scala 2.10.6[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.13:component from component compiler for Scala 2.10.6[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 11e16083, interfacing (CompilerInterface) with Scala compiler version 2.10.6[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk/jre/classes:/home/kamus/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/target/scala-2.10/classes[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:3: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.actor.ActorSystem[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:4: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.http.scaladsl.Http[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:5: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.stream.ActorMaterializer[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:12: not found: type ActorSystem[0m
+[0m[[31merror[0m] [0m                     val system: ActorSystem,[0m
+[0m[[31merror[0m] [0m                                 ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:13: not found: type ActorMaterializer[0m
+[0m[[31merror[0m] [0m                     implicit val materializer: ActorMaterializer) extends CustomerService {[0m
+[0m[[31merror[0m] [0m                                                ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:15: not found: value Http[0m
+[0m[[31merror[0m] [0m  def startServer(address: String, port: Int): Future[Http.ServerBinding] = {[0m
+[0m[[31merror[0m] [0m                                                      ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:16: not found: value Http[0m
+[0m[[31merror[0m] [0m    Http().bindAndHandle(route, address, port)[0m
+[0m[[31merror[0m] [0m    ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:23: not found: value ActorSystem[0m
+[0m[[31merror[0m] [0m    implicit val actorSystem = ActorSystem("customer-server")[0m
+[0m[[31merror[0m] [0m                               ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerServer.scala:24: not found: value ActorMaterializer[0m
+[0m[[31merror[0m] [0m    implicit val materializer = ActorMaterializer()[0m
+[0m[[31merror[0m] [0m                                ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:5: object domain is not a member of package customer[0m
+[0m[[31merror[0m] [0mimport customer.domain.Customer[0m
+[0m[[31merror[0m] [0m                ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:6: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.http.scaladsl.server.Directives._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:7: not found: object akka[0m
+[0m[[31merror[0m] [0mimport akka.http.scaladsl.server.Route[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:8: object infraestructure is not a member of package customer[0m
+[0m[[31merror[0m] [0mimport customer.infraestructure.grpc.CustomerPlanClient[0m
+[0m[[31merror[0m] [0m                ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:9: object circe is not a member of package io[0m
+[0m[[31merror[0m] [0mimport io.circe.generic.auto._[0m
+[0m[[31merror[0m] [0m          ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:10: not found: object de[0m
+[0m[[31merror[0m] [0mimport de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:13: not found: type Route[0m
+[0m[[31merror[0m] [0m  val route: Route =[0m
+[0m[[31merror[0m] [0m             ^[0m
+[0m[[31merror[0m] [0m/home/kamus/Documents/proyectos/pruebas/akka-http-grpc/customer/src/main/scala/customer/services/CustomerService.scala:14: not found: value path[0m
+[0m[[31merror[0m] [0m    path("customer") {[0m
+[0m[[31merror[0m] [0m    ^[0m
+[0m[[31merror[0m] [0m17 errors found[0m
+[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
+[0m[[31merror[0m] [0m(compile:[31mcompileIncremental[0m) Compilation failed[0m
