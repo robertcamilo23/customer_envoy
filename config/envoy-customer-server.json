@@ -8,38 +8,25 @@
           "name": "http_connection_manager",
           "config": {
             "codec_type": "http2",
-            "stat_prefix": "ingress_http",
-            "access_log": [
-              {
-                "path": "/var/log/envoy/admin_access.log"
-              }
-            ],
+            "stat_prefix": "Sergio",
             "route_config": {
-              "virtual_hosts": [
-                {
-                  "name": "customer_service",
-                  "domains": ["*"],
-                  "routes": [
-                    {
-                      "path": "/com.customer.protos.CustomerPlan/associateCustomerToPlan",
-                      "cluster": "customer_service_grpc"
-                    }
-                  ]
-                }
-              ]
+              "virtual_hosts": [{
+                "name": "Sergio2",
+                "domains": ["*"],
+                "routes": [{
+                  "prefix": "/",
+                  "cluster": "customer_service_grpc"
+                }]
+              }]
             },
-            "filters": [
-              { 
-                "type": "both",
-                "name": "grpc_web",
-                "config": {}
-              },
-              {
-                "type": "decoder",
-                "name": "router",
-                "config": {}
-              }
-            ]
+            "filters": [{
+              "type": "decoder",
+              "name": "router",
+              "config": {}
+            }],
+            "access_log": [{
+              "path": "/var/log/envoy/admin_access.log"
+            }]
           }
         }
       ]
@@ -59,7 +46,7 @@
         "features": "http2",
         "hosts": [
           {
-            "url": "tcp://127.0.0.1:50053"
+            "url": "tcp://192.168.6.165:50053"
           }
         ]
       }
