@@ -7,10 +7,9 @@ services:
       dockerfile: Dockerfile-customer_client
     volumes:
       - ./config/envoy-customer-client.json:/etc/envoy-customer-client.json
-    expose:
-      - "50051"
+      - ./config/customer-service-assembly-1.0.jar:/home/customer-service-assembly-1.0.jar
     ports:
-      - "50051:50051"
+      - "8080:8080"
       - "9901:9901"
 
   envoy_server:
@@ -19,6 +18,7 @@ services:
       dockerfile: Dockerfile-customer_server
     volumes:
       - ./config/envoy-customer-server.json:/etc/envoy-customer-server.json
+      - ./config/customer-plan-assembly-1.0.jar:/home/customer-plan-assembly-1.0.jar
     expose:
       - "50052"
     ports:
