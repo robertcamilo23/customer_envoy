@@ -1,0 +1,9 @@
+customer/.idea/*
+customer/project/project/target/*
+customer/project/target/*
+customer/target/*
+
+serviceA/.idea/*
+serviceA/project/project/target/*
+serviceA/project/target/*
+serviceA/target/*
