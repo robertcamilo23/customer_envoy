@@ -1,5 +1,0 @@
-[0m[[0minfo[0m] [0mCompiling 1 protobuf files to /home/sergio/Desktop/customer_envoy/translate-proxy/target/scala-2.12/src_managed/main[0m
-[0m[[0mdebug[0m] [0mprotoc options:[0m
-[0m[[0minfo[0m] [0mCompiling schema /home/sergio/Desktop/customer_envoy/translate-proxy/src/main/protobuf/translate_proxy.proto[0m
-[0m[[0minfo[0m] [0mCompiling protobuf[0m
-[0m[[0minfo[0m] [0mProtoc target directory: /home/sergio/Desktop/customer_envoy/translate-proxy/target/scala-2.12/src_managed/main[0m
