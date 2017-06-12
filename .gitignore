@@ -3,6 +3,11 @@ customer/project/project/target/*
 customer/project/target/*
 customer/target/*
 
+customer-plan/.idea/*
+customer-plan/project/project/target/*
+customer-plan/project/target/*
+customer-plan/target/*
+
 serviceA/.idea/*
 serviceA/project/project/target/*
 serviceA/project/target/*
