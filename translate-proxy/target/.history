@@ -1,0 +1,8 @@
+compile
+run
+compile
+run
+clean
+cleanFiles
+compile
+run

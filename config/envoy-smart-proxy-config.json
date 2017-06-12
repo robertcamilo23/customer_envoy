@@ -11,11 +11,11 @@
         "stat_prefix": "ingress_http",
         "route_config": {
           "virtual_hosts": [{
-            "name": "serviceA",
+            "name": "translate-proxy",
             "domains": ["*"],
             "routes": [{
-              "prefix": "/servicea",
-              "cluster": "service_a"
+              "prefix": "/tproxy",
+              "cluster": "translate_proxy"
             },{
               "prefix": "/serviceb",
               "cluster": "service_b"
@@ -39,12 +39,12 @@
   },
   "cluster_manager": {
     "clusters": [{
-      "name": "service_a",
+      "name": "translate_proxy",
       "connect_timeout_ms": 250,
       "type": "static",
       "lb_type": "round_robin",
       "hosts": [{
-        "url": "tcp://192.168.6.237:8081"
+        "url": "tcp://192.168.20.6:8088"
       }]
     },{
       "name": "service_b",
@@ -52,7 +52,7 @@
       "type": "static",
       "lb_type": "round_robin",
       "hosts": [{
-        "url": "tcp://192.168.6.237:8082"
+        "url": "tcp://192.168.20.6:8082"
       }]
     }]
   }
