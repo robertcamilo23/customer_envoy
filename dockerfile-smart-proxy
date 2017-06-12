@@ -1,3 +1,0 @@
-FROM lyft/envoy:latest
-RUN mkdir /var/log/envoy/
-CMD /usr/local/bin/envoy -c /etc/envoy-config.json

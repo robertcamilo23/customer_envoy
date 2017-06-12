@@ -1,9 +1,15 @@
-customer/.idea/*
-customer/project/project/target/*
-customer/project/target/*
-customer/target/*
+.classpath
+.project
+.settings/
 
-serviceA/.idea/*
-serviceA/project/project/target/*
-serviceA/project/target/*
-serviceA/target/*
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/

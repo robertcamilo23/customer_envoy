@@ -64,4 +64,6 @@
 [0m[[0mdebug[0m] [0m	/home/sergio/.ivy2/cache/io.grpc/grpc-stub/jars/grpc-stub-1.2.0.jar[0m
 [0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
 [0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread translate-proxy-server-akka.actor.default-dispatcher-2 to terminate.[0m
+[0m[[0mdebug[0m] [0m	Thread translate-proxy-server-akka.actor.default-dispatcher-2 exited.[0m
 [0m[[0mdebug[0m] [0mWaiting for thread translate-proxy-server-akka.io.pinned-dispatcher-5 to terminate.[0m

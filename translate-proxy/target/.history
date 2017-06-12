@@ -6,3 +6,5 @@ clean
 cleanFiles
 compile
 run
+assembly
+run

@@ -20,6 +20,6 @@ object TranslateProxyServer {
     implicit val materializer = ActorMaterializer()
 
     val server = new TranslateProxyServer()
-    server.startServer("localhost", 8088)
+    server.startServer("0.0.0.0", 8088)
   }
 }
