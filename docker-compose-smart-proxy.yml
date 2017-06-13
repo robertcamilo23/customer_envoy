@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile-smart-proxy
     volumes:
       - ./config/envoy-smart-proxy-config.json:/etc/envoy-smart-proxy-config.json
+      - ./config/translate-proxy-assembly-1.0.jar:/home/translate-proxy-assembly-1.0.jar
     expose:
       - "8181"
     ports:
