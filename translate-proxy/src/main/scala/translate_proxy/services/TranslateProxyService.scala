@@ -1,12 +1,11 @@
 package translate_proxy.services
 
-import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import translate_proxy.domain.{TranslateProxy, TranslateProxyResponse}
-import translate_proxy.infraestructure.BusinessControlImpl
-import io.circe.generic.auto._
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._
+import io.circe.generic.auto._
+import translate_proxy.domain.TranslateProxy
+import translate_proxy.infraestructure.BusinessControlImpl
 
 trait TranslateProxyService {
   val route: Route =
@@ -15,10 +14,8 @@ trait TranslateProxyService {
         entity(as[TranslateProxy]) {
           translateProxy: TranslateProxy =>
             complete {
-              println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
               val _bci = new BusinessControlImpl
-              val _response: TranslateProxyResponse = _bci.validate(translateProxy)
-              _response
+              _bci.validate(translateProxy)
             }
         }
       }

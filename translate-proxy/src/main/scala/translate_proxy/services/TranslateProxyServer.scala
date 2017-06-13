@@ -3,6 +3,7 @@ package translate_proxy.services
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
+
 import scala.concurrent.Future
 
 class TranslateProxyServer(implicit val system: ActorSystem,
@@ -15,11 +16,16 @@ class TranslateProxyServer(implicit val system: ActorSystem,
 
 object TranslateProxyServer {
 
+  private val serverPort = 8088
+
   def main(args: Array[String]) {
     implicit val actorSystem = ActorSystem("translate-proxy-server")
     implicit val materializer = ActorMaterializer()
 
     val server = new TranslateProxyServer()
-    server.startServer("0.0.0.0", 8088)
+
+    server.startServer("0.0.0.0", serverPort)
+    println("Server started at: " + serverPort)
+
   }
 }
