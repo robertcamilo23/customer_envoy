@@ -18,7 +18,9 @@ libraryDependencies ++= {
     "org.scalatest"     %  "scalatest_2.12"    % "3.0.1",
     "ch.qos.logback"    % "logback-classic"    % "1.2.3",
     "io.grpc"                %  "grpc-netty"           % com.trueaccord.scalapb.compiler.Version.grpcJavaVersion,
-    "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % com.trueaccord.scalapb.compiler.Version.scalapbVersion
+    "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % com.trueaccord.scalapb.compiler.Version.scalapbVersion,
+    "org.scalaj" %% "scalaj-http" % "2.3.0",
+    "com.google.code.gson" % "gson" % "2.8.1"
   )
 
 }
