@@ -26,5 +26,6 @@ object TranslateProxyServer {
 
     server.startServer("0.0.0.0", serverPort)
     println("Server started at: " + serverPort)
+
   }
 }
