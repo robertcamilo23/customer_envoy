@@ -3,6 +3,7 @@ package translate_proxy.services
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
+
 import scala.concurrent.Future
 
 class TranslateProxyServer(implicit val system: ActorSystem,
