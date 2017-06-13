@@ -42,7 +42,7 @@
       "lb_type": "round_robin",
       "features": "http2",
       "hosts": [{
-        "url": "tcp://192.168.20.6:50052"
+        "url": "tcp://192.168.6.165:50052"
       }]
     }]
   }
