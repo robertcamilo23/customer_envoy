@@ -1,31 +1,76 @@
 package customer.services
 
-import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
-import akka.stream.ActorMaterializer
-import scala.concurrent.Future
+import java.util.UUID
+import java.util.logging.Logger
+
+import com.customer.protos.translate_proxy.{CustomerGrpc, SmartProxyReply, SmartProxyRequest}
+import customer.domain.Customer
+import customer.infraestructure.grpc.CustomerPlanClient
+import io.grpc.{Server, ServerBuilder}
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
   * Created by kamus on 5/06/17.
   */
-class CustomerServer(implicit
-                     val system: ActorSystem,
-                     implicit val materializer: ActorMaterializer) extends CustomerService {
-
-  def startServer(address: String, port: Int): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(route, address, port)
-  }
-}
-
 object CustomerServer {
 
-  def main(args: Array[String]) {
-    implicit val actorSystem = ActorSystem("customer-server")
-    implicit val materializer = ActorMaterializer()
+  private val logger = Logger.getLogger(classOf[CustomerServer].getName)
 
-    val server = new CustomerServer()
-    println( "Starting server ..." )
-    server.startServer("0.0.0.0", 8080)
-    println( "Server started!" )
+  def main(args: Array[String]) {
+    val server = new CustomerServer(ExecutionContext.global)
+    server.start()
+    server.blockUntilShutdown()
   }
+
+  private val port = 8080
 }
+
+class CustomerServer(executionContext: ExecutionContext) {
+  self =>
+
+  private[this] var server: Server = null
+
+  private def start(): Unit = {
+    server = ServerBuilder.forPort(CustomerServer.port)
+      .addService(CustomerGrpc.bindService(new CustomerImpl, executionContext))
+      .build
+      .start
+
+    CustomerServer.logger.info("Server started, listening on " + CustomerServer.port)
+
+    sys.addShutdownHook {
+      System.err.println("*** shutting down gRPC server since JVM is shutting down")
+      self.stop()
+      System.err.println("*** server shut down")
+    }
+  }
+
+  private def stop(): Unit = {
+    if (server != null) {
+      server.shutdown()
+    }
+  }
+
+  private def blockUntilShutdown(): Unit = {
+    if (server != null) {
+      server.awaitTermination()
+    }
+  }
+
+  private class CustomerImpl extends CustomerGrpc.Customer {
+    override def sendRequestRpc(request: SmartProxyRequest): Future[SmartProxyReply] = {
+      val customer = Customer(UUID.fromString(request.id), request.name, request.age)
+      println("******************************************")
+      println("Customer: " + customer)
+      println("Request: " + request)
+      println("******************************************")
+      CustomerPlanClient.associatePlan(customer) map { reply =>
+        SmartProxyReply(message = reply.message)
+      }
+    }
+  }
+
+}
+

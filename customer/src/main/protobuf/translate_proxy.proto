@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.customer.protos;
+
+service Customer {
+    rpc sendRequestRpc ( SmartProxyRequest ) returns ( SmartProxyReply ) {}
+}
+
+message SmartProxyRequest {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+}
+
+message SmartProxyReply {
+    string message = 1;
+}
+
+
