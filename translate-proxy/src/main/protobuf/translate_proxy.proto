@@ -7,10 +7,13 @@ service Customer {
 }
 
 message Request {
-    string customerId = 1;
-    string customerPlan = 2;
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
 }
 
 message Reply {
     string message = 1;
 }
+
+

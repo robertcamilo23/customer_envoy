@@ -1,9 +1,9 @@
 package translate_proxy.infraestructure
 
+import java.nio.ByteBuffer
 import java.util.UUID
 import java.util.logging.Logger
 
-import com.google.gson.Gson
 import translate_proxy.domain._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -24,19 +24,30 @@ class BusinessControlImpl extends BusinessControl {
         val a = makeHttpRequest(tpr)
         Right(TranslateProxyResponse(a.body, a.code, "ok"))
     } recover {
-      case e: Exception => Left(TranslateProxyError(e.getMessage, 404))
+      case e: Exception =>
+        e.printStackTrace()
+        Left(TranslateProxyError(e.getMessage, 404))
     }
   }
 
   def makeHttpRequest(translateProxy: TranslateProxyResponse): HttpResponse[String] = {
 
-    val gson = new Gson()
-    val customer = new Customer(id = UUID.randomUUID(), name = translateProxy.name, age = translateProxy.age)
+    val request = com.customer.protos.translate_proxy.Request(
+      id = UUID.randomUUID().toString,
+      name = translateProxy.name,
+      age = translateProxy.age
+    )
 
-    val response = Http("http://0.0.0.0:8181/customer")
-      .postData(gson.toJson(customer).stripMargin)
-      .header("Content-Type", "application/json")
+    val len: Array[Byte] = 0.toByte +: ByteBuffer.allocate(4).putInt(request.toByteArray.length).array()
+    val dat: Array[Byte] = request.toByteArray
+    val data = len ++ dat
+
+    val response = Http("http://0.0.0.0:8181/com.customer.protos.Customer/sendRequestRpc")
+      .postData(data)
+      .header("content-type", "application/grpc")
+      .header("TE", "trailers")
       .asString
+    println(response)
     response
 
   }
@@ -49,6 +60,6 @@ class BusinessControlImpl extends BusinessControl {
     val _token: String = "12345678Prueba$%&/"
 
     Future.successful(TranslateProxyResponse(translateProxy.name, translateProxy.age, _token))
-    //Future.failed(new Exception("Error en esta jodaaa !!!!"))
+    //    Future.failed(new Exception("Error en esta jodaaa !!!!"))
   }
 }
