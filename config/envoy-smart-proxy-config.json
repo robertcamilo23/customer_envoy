@@ -20,16 +20,25 @@
               "prefix": "/serviceb",
               "cluster": "service_b"
             },{
-              "prefix": "/customer",
-              "cluster": "success_validate"
+            	"prefix": "/com.customer.protos.Customer",
+            	"cluster": "proto_customer",
+            	"headers": [
+                    {"name": "content-type", "value": "application/grpc"}
+                ]
             }]
           }]
         },
-        "filters": [{
-          "type": "decoder",
-          "name": "router",
-          "config": {}
-        }],
+        "filters": [
+        	{
+              "type": "both",
+              "name": "grpc_http1_bridge",
+              "config": {}
+            },
+            {
+	          "type": "decoder",
+	          "name": "router",
+	          "config": {}
+	        }],
         "access_log": [{
           "path": "/var/log/envoy/admin_access.log"
         }]
@@ -58,10 +67,11 @@
         "url": "tcp://0.0.0.0:7777"
       }]
     },{
-      "name": "success_validate",
+      "name": "proto_customer",
       "connect_timeout_ms": 250,
       "type": "static",
       "lb_type": "round_robin",
+      "features": "http2",
       "hosts": [{
         "url": "tcp://192.168.6.165:8080"
       }]
